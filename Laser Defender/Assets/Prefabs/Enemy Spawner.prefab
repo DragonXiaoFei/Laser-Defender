@@ -57,3 +57,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f94fa1570c19b4df3abb7893985797ad, type: 2}
   - {fileID: 11400000, guid: bc737c330348f4133a409ab39c7a2a32, type: 2}
   startingWave: 0
+  looping: 1
