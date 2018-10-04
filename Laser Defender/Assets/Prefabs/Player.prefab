@@ -102,6 +102,8 @@ MonoBehaviour:
     type: 2}
   projectileSpeed: 20
   projectileFiringPeriod: 0.05
+  deathVFX: {fileID: 1080800194288956, guid: 93962f81e91f84f13abb4bf23094b5d8, type: 2}
+  durationOfExplosion: 1
 --- !u!212 &212281988995656858
 SpriteRenderer:
   m_ObjectHideFlags: 1

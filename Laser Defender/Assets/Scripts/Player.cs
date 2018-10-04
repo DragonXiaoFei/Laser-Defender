@@ -15,6 +15,8 @@ public class Player : MonoBehaviour {
     [SerializeField] GameObject laserPrefab;
     [SerializeField] float projectileSpeed = 10f;
     [SerializeField] float projectileFiringPeriod = 0.1f;
+    [SerializeField] GameObject deathVFX;
+    [SerializeField] float durationOfExplosion = 1f;
     Coroutine firingCoroutine;
 
     float xMin;
@@ -107,10 +109,17 @@ public class Player : MonoBehaviour {
         damageDealer.Hit();
         if (playerHealth <= 0)
         {
-            Destroy(gameObject);
+            PlayerDeath();
 
         }
+
+
     }
 
-
+    private void PlayerDeath()
+    {
+        Destroy(gameObject);
+        GameObject explosion = Instantiate(deathVFX, transform.position, transform.rotation);
+        Destroy(explosion, durationOfExplosion);
+    }
 }
