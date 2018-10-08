@@ -97,13 +97,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   padding: 0.05
-  playerHealth: 500
+  playerHealth: 200
   laserPrefab: {fileID: 1672123418824284, guid: 35f6a35b1b1c540bb97b26c2ddf6a2bd,
     type: 2}
   projectileSpeed: 20
   projectileFiringPeriod: 0.05
-  deathVFX: {fileID: 1080800194288956, guid: 93962f81e91f84f13abb4bf23094b5d8, type: 2}
+  deathVFX: {fileID: 1080800194288956, guid: d9830f72f305e43d9ba74cf72b34532b, type: 2}
   durationOfExplosion: 1
+  deathNoise: {fileID: 8300000, guid: f2970d2db8b8243109a2f7ed1e84fe40, type: 3}
+  laserNoise: {fileID: 8300000, guid: eeeb0d54845d94f108a50e72e8adb01b, type: 3}
 --- !u!212 &212281988995656858
 SpriteRenderer:
   m_ObjectHideFlags: 1

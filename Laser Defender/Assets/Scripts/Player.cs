@@ -11,6 +11,7 @@ public class Player : MonoBehaviour {
     [SerializeField] int playerHealth = 200;
 
 
+
     [Header("Projectile")]
     [SerializeField] GameObject laserPrefab;
     [SerializeField] float projectileSpeed = 10f;
@@ -18,6 +19,12 @@ public class Player : MonoBehaviour {
     [SerializeField] GameObject deathVFX;
     [SerializeField] float durationOfExplosion = 1f;
     Coroutine firingCoroutine;
+
+    [Header("Noise")]
+    [SerializeField] AudioClip deathNoise;
+    float SFXDeathNoiseLevel = 2000000000000f;
+    float SFXLaserNoiseLevel = 0.05f;
+    [SerializeField] AudioClip laserNoise;
 
     float xMin;
     float xMax;
@@ -58,6 +65,10 @@ public class Player : MonoBehaviour {
         {
             StopCoroutine(firingCoroutine);
         }
+
+
+
+
     }
 
     IEnumerator FireContinuously()
@@ -70,6 +81,7 @@ public class Player : MonoBehaviour {
                 Quaternion.identity) as GameObject;
             laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, projectileSpeed);
             yield return new WaitForSeconds(projectileFiringPeriod);
+            LaserNoise();
         }
     }
 
@@ -118,8 +130,28 @@ public class Player : MonoBehaviour {
 
     private void PlayerDeath()
     {
+        FindObjectOfType<Level>().LoadGameOver();
         Destroy(gameObject);
         GameObject explosion = Instantiate(deathVFX, transform.position, transform.rotation);
         Destroy(explosion, durationOfExplosion);
+        DeathNoise();
+        FindObjectOfType<GameSession>().ResetGame();
+
+
+    }
+
+    public int GetHealth()
+    {
+        return playerHealth;
+    }
+
+    public void DeathNoise()
+    {
+        AudioSource.PlayClipAtPoint(deathNoise, Camera.main.transform.position, SFXDeathNoiseLevel);
+    }
+
+    public void LaserNoise()
+    {
+        AudioSource.PlayClipAtPoint(laserNoise, Camera.main.transform.position, SFXLaserNoiseLevel);
     }
 }

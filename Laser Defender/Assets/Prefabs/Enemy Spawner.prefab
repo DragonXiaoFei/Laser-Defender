@@ -33,7 +33,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1261835263812388}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -53,8 +53,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveConfigs:
   - {fileID: 11400000, guid: 88ef392d8615e4b69a9264d5dadf9168, type: 2}
-  - {fileID: 11400000, guid: 97e27292cce66431b8444fa6e975c248, type: 2}
   - {fileID: 11400000, guid: f94fa1570c19b4df3abb7893985797ad, type: 2}
+  - {fileID: 11400000, guid: 97e27292cce66431b8444fa6e975c248, type: 2}
   - {fileID: 11400000, guid: bc737c330348f4133a409ab39c7a2a32, type: 2}
+  - {fileID: 11400000, guid: 10ba33599edca456cbb3a5d164de3b43, type: 2}
   startingWave: 0
   looping: 1

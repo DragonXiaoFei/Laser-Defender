@@ -3,14 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour {
+    [Header("Enemy")]
     [SerializeField] float health = 100f;
+    [SerializeField] GameObject deathVFX;
+    [SerializeField] float durationOfExplosion = 1f;
+    [SerializeField] int scoreValue = 100;
+
+    [Header("Projectile")]
     [SerializeField] float shotCounter;
     [SerializeField] float minTimeBetweenShots = 0.2f;
     [SerializeField] float maxTimeBetweenShots = 3f;
     [SerializeField] GameObject projectile;
     [SerializeField] float projectileSpeed = 10f;
-    [SerializeField] GameObject deathVFX;
-    [SerializeField] float durationOfExplosion = 1f;
+
+
+    [Header("Noise")]
+    [SerializeField] float SFXDeathNoiseLevel;
+    [SerializeField] float SFXLaserNoiseLevel;
+    [SerializeField] AudioClip deathNoise;
+    [SerializeField] AudioClip laserNoise;
 
 
 
@@ -45,6 +56,7 @@ public class Enemy : MonoBehaviour {
             Quaternion.identity
         ) as GameObject;
         laser.GetComponent<Rigidbody2D>().velocity = new Vector2(0, -projectileSpeed);
+        LaserNoise();
     }
 
 
@@ -68,8 +80,21 @@ public class Enemy : MonoBehaviour {
 
     private void Die()
     {
+        
         Destroy(gameObject);
         GameObject explosion = Instantiate(deathVFX, transform.position, transform.rotation);
         Destroy(explosion, durationOfExplosion);
+        DeathNoise();
+        FindObjectOfType<GameSession>().AddToScore(scoreValue);
+    }
+
+    public void DeathNoise()
+    {
+        AudioSource.PlayClipAtPoint(deathNoise, Camera.main.transform.position, SFXDeathNoiseLevel);
+    }
+
+    public void LaserNoise()
+    {
+        AudioSource.PlayClipAtPoint(laserNoise, Camera.main.transform.position, SFXLaserNoiseLevel);
     }
 }
